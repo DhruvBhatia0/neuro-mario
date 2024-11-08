@@ -36,7 +36,7 @@ clock = pygame.time.Clock()
 os.makedirs('collected_training_data/frames', exist_ok=True)
 
 # Open log file
-log_file = open('collected_training_data/log.txt', 'w')
+# log_file = open('collected_training_data/log.txt', 'w')
 
 # Frame counter
 frame_count = 0
@@ -57,21 +57,21 @@ while running:
             character_x = screen_width - 100
         facing_right = True
         current_sprite = (current_sprite + 1) % len(sprite_images)  # Faster animation
-        log_file.write(f"{current_time}, {frame_count}, RIGHT\n")  # Log RIGHT input
+        # log_file.write(f"{current_time}, {frame_count}, RIGHT\n")  # Log RIGHT input
     elif keys[pygame.K_LEFT]:
         character_x -= character_speed
         if (character_x) < 0:
             character_x = 0
         facing_right = False
         current_sprite = (current_sprite + 1) % len(sprite_images)  # Faster animation
-        log_file.write(f"{current_time}, {frame_count}, LEFT\n")  # Log LEFT input
+        # log_file.write(f"{current_time}, {frame_count}, LEFT\n")  # Log LEFT input
     else:
         current_sprite = 0  # Reset to frame zero when not moving
 
     if keys[pygame.K_UP] and not is_jumping:
         is_jumping = True
         jump_velocity = jump_height
-        log_file.write(f"{current_time}, {frame_count}, JUMP\n")  # Log JUMP input
+        # log_file.write(f"{current_time}, {frame_count}, JUMP\n")  # Log JUMP input
 
     if is_jumping:
         character_y -= jump_velocity
@@ -90,8 +90,8 @@ while running:
     screen.blit(sprite, (character_x, character_y))
 
     # Save the current frame
-    frame_filename = f'collected_training_data/frames/frame_{frame_count}.png'
-    pygame.image.save(screen, frame_filename)
+    # frame_filename = f'collected_training_data/frames/frame_{frame_count}.png'
+    # pygame.image.save(screen, frame_filename)
 
     # Update the display
     pygame.display.flip()
@@ -103,7 +103,7 @@ while running:
     frame_count += 1
 
 # Close log file
-log_file.close()
+# log_file.close()
 
 # Quit Pygame
 pygame.quit()
